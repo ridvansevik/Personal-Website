@@ -12,11 +12,13 @@ function generateCommandsStructure() {
     return [
         { id: 'NavHome', nameKey: 'cmdNavHomeName', descriptionKey: 'cmdNavHomeDesc', action: '#home' },
         { id: 'NavAbout', nameKey: 'cmdNavAboutName', descriptionKey: 'cmdNavAboutDesc', action: '#about' },
+        { id: 'NavExperience', nameKey: 'cmdNavExperienceName', descriptionKey: 'cmdNavExperienceDesc', action: '#experience' },
         { id: 'NavEducation', nameKey: 'cmdNavEducationName', descriptionKey: 'cmdNavEducationDesc', action: '#education' },
         { id: 'NavSkills', nameKey: 'cmdNavSkillsName', descriptionKey: 'cmdNavSkillsDesc', action: '#skills' },
         { id: 'NavProjects', nameKey: 'cmdNavProjectsName', descriptionKey: 'cmdNavProjectsDesc', action: '#projects' },
+        { id: 'NavAchievements', nameKey: 'cmdNavAchievementsName', descriptionKey: 'cmdNavAchievementsDesc', action: '#achievements' },
         { id: 'NavContact', nameKey: 'cmdNavContactName', descriptionKey: 'cmdNavContactDesc', action: '#contact' },
-        { id: 'ToggleTheme', nameKey: 'cmdToggleThemeName', descriptionKey: 'cmdToggleThemeDesc', action: function() { if (themeToggleBtn) themeToggleBtn.click(); } }
+        { id: 'ToggleTheme', nameKey: 'cmdToggleThemeName', descriptionKey: 'cmdToggleThemeDesc', action: function () { if (themeToggleBtn) themeToggleBtn.click(); } }
     ];
 }
 
@@ -178,7 +180,7 @@ export function initCommandPalette() {
     });
 
     if (commandPaletteOverlay) {
-        commandPaletteOverlay.addEventListener('click', function(e) {
+        commandPaletteOverlay.addEventListener('click', function (e) {
             if (e.target === commandPaletteOverlay) {
                 closeCommandPalette();
             }
