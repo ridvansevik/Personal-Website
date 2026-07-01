@@ -30,21 +30,10 @@ window.initializeTxtRotateElements = (specificElement = null) => {
     initializeTxtRotateModule(specificElement); // animations.js'deki güncellenmiş initTxtRotate'i çağırır
 };
 
-// Global refresh functions for modules that need to update their text
-// (Bu fonksiyonların commandPalette.js ve projectFeatures.js içinde tanımlı olduğundan emin olun
-// ve languageManager tarafından çağrıldığında doğru şekilde çalıştıklarını kontrol edin.)
-window.refreshCommandPaletteCommands = () => {
-    if (typeof initCommandPalette === 'function' && window.commandPaletteInitialized) {
-        // Gerekirse initCommandPalette(); çağrılabilir veya commandPalette modülünde özel bir refresh fonksiyonu olabilir.
-        // languageManager.js içindeki setLanguage fonksiyonunda bu tür refresh'ler çağrılıyor.
-    }
-};
 
-window.refreshProjectFeaturesText = () => {
-    if (typeof initProjectFeatures === 'function' && window.projectFeaturesInitialized) {
-        initProjectFeatures();
-    }
-};
+// Note: window.refreshCommandPaletteCommands is defined in commandPalette.js
+// Note: window.refreshProjectFeaturesText is defined in projectFeatures.js
+
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Initialize Language Manager first, it will load and apply initial translations

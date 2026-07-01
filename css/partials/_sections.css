@@ -293,18 +293,6 @@ body.dark-mode .project-card:hover {
 }
 .btn-link i { margin-left: 5px; }
 .btn-link:hover { text-decoration: underline; }
-.github-stats { /* Added for project cards if you use data-repo */
-    font-size: 0.85em;
-    color: var(--text-color);
-    opacity: 0.8;
-    padding: 0 15px 10px;
-}
-.github-stats .stat-item {
-    margin-right: 10px;
-}
-.github-stats .stat-item i {
-    margin-right: 4px;
-}
 .stat-loading, .stat-error {
     font-style: italic;
 }
@@ -312,9 +300,8 @@ body.dark-mode .project-card:hover {
 
 /* Contact Section */
 .contact-section .contact-intro  { 
-    background-color: var(--secondary-bg-color); 
     text-align: center;
-    margin-bottom: 20px; /* Form ile arasına biraz boşluk ekleyebilirsiniz */
+    margin-bottom: 20px;
 }
 
 /* Footer */

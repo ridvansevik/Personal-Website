@@ -81,9 +81,8 @@ function applyTranslationsToPage() {
         }
         // Add similar universal placeholder replacements here if needed in the future, e.g., {appName}
 
-        // The condition "finalTranslation !== key" ensures we only update if a translation exists (or was modified, e.g., year inserted).
-        // The second part "elements.some(...)" is for attributes that might have a key but no initial value matching the key.
-        if (finalTranslation !== key || elements.some(item => item.el.dataset[item.type] !== undefined)) {
+        // Always apply translations when a valid translation value exists for the key
+        if (finalTranslation !== undefined) {
             elements.forEach(item => {
                 if (item.type === 'textContent') {
                     item.el.textContent = finalTranslation;
@@ -111,6 +110,8 @@ function applyTranslationsToPage() {
 
 export function getTranslation(key, params = {}) {
     let translation = currentTranslations[key] || key;
+    // If translation is not a string (e.g., an array for data-rotate), return as-is
+    if (typeof translation !== 'string') return translation;
     for (const param in params) {
         translation = translation.replace(new RegExp(`{${param}}`, 'g'), params[param]);
     }
@@ -148,8 +149,8 @@ export async function initLanguageManager() {
     const initialLang = supportedLangs.includes(preferredLang) ? preferredLang : 'en';
 
     // Set language will load and apply translations.
-    // No need to await here in DOMContentLoaded, let it run.
-    setLanguage(initialLang);
+    // Must await so translations are ready before other modules initialize.
+    await setLanguage(initialLang);
 
     document.getElementById('lang-en')?.addEventListener('click', () => setLanguage('en'));
     document.getElementById('lang-tr')?.addEventListener('click', () => setLanguage('tr'));
